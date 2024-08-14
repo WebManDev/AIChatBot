@@ -1,9 +1,8 @@
-
 import {NextResponse} from 'next/server' // Import NextResponse from Next.js for handling responses
 import OpenAI from 'openai' // Import OpenAI library for interacting with the OpenAI API
 
 // System prompt for the AI, providing guidelines on how to respond to users
-const systemPrompt = // Use your own system prompt here
+const systemPrompt = "Show your knowledge"
 
 // POST function to handle incoming requests
 export async function POST(req) {
@@ -13,7 +12,7 @@ export async function POST(req) {
   // Create a chat completion request to the OpenAI API
   const completion = await openai.chat.completions.create({
     messages: [{role: 'system', content: systemPrompt}, ...data], // Include the system prompt and user messages
-    model: 'gpt-4o', // Specify the model to use
+    model: "gpt-4o-mini", // Specify the model to use
     stream: true, // Enable streaming responses
   })
 
